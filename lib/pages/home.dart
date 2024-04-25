@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-import 'package:my_ong/utils/app_routes.dart';
+import 'package:my_ong/mocks/ongs.dart';
 import 'package:my_ong/widgets/app_logo.dart';
+import 'package:my_ong/widgets/ong_list_tile.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -21,32 +20,9 @@ class HomePage extends StatelessWidget {
         height: size.height,
         color: Colors.white,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Column(
-              children: [
-                TextFormField(
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    labelText: 'Email',
-                  ),
-                ),
-              ],
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, AppRoutes.contact);
-                },
-                child: const Text('Contact'))
-          ],
+          children: OngsMocks.ongs.map((e) => OngListTile(e)).toList(),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, AppRoutes.ong);
-        },
-        child: Icon(Icons.add),
       ),
     );
   }

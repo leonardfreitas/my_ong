@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_ong/models/ong.dart';
 import 'package:my_ong/widgets/app_logo.dart';
 
 class OngPage extends StatelessWidget {
@@ -6,13 +7,15 @@ class OngPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ong = ModalRoute.of(context)!.settings.arguments as Ong;
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const AppLogo('ONG XYZ'),
+        title: AppLogo(ong.name),
       ),
-      body: const Center(
-        child: Text('ONG'),
+      body: Center(
+        child: Text(ong.description),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
